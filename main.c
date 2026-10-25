@@ -25,7 +25,7 @@ unsigned char readln(char *buff, unsigned char max)
 }
 int main(void)
 {
-    char name[] = " "; 
+    char name[20] = {0}; 
     char word[20] = "HELLO FROM ARDUINO";
     usart_init(myUbrr);
     DDRB |= (1 << PB5);
@@ -33,7 +33,7 @@ int main(void)
     PORTB |= (1 << PB5);
     for(;;){
         putln("Press enter to reveal the line of text: ");
-        unsigned char chr = uart_recv();
+        uart_recv();
         putln(word);
         putf("Enter your name:");
         readln(name, sizeof(name));
